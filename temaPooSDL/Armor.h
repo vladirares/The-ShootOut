@@ -18,13 +18,13 @@ protected:
 public:
 
 	Armor(const char* texturesheet, SDL_Renderer* ren, int x, int y);
-	virtual int calculateTotalDamage(Weapon&) = 0;
+	virtual int calculateTotalDamage(Weapon&) = 0;						//metoda pur virtuala
 	void Render();
 	void Update(int,int);
 	int getHp();
 	void setHp(int);
 	float getWeight();
 	string getName();
-	virtual ~Armor();
+	virtual ~Armor();													//constructor virtualizat
 };
 

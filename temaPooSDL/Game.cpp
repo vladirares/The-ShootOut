@@ -16,7 +16,7 @@ Game::~Game() {
 }
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, int noAgents, int visibilityArea, bool fullscreen) {
-	int flags = 0;
+	int flags = 0;										//initializarea scenei jocului
 	if (fullscreen) {
 		flags = SDL_WINDOW_FULLSCREEN;
 	}
@@ -38,7 +38,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, in
 		isRunning = false;
 	}
 
-	map = new Map(renderer, width / 32, height / 32);
+	map = new Map(renderer, width / 32, height / 32);							//crearea hartii cu parametrii primiti din main
 	cout << *map;
 	cout << "press any button to start the game" << endl;
 
@@ -46,12 +46,12 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, in
 	for (int i = 0; i < noAgents;i++) {
 		int posX = 0, posY = 0;
 		do {
-			 posX = (rand() % (width / 32)) * 32;
+			 posX = (rand() % (width / 32)) * 32;									//initializarea pozitiei agentilor astfel incat sa nu fie 2 pe acelasi bloc
 			 posY = (rand() % (height / 32)) * 32;
 		} while (map->getBlocuri()[posX / 32][posY / 32].isOccupied());
 		int armorType = rand() % 3;
 
-		Armor* armura = new KevlarArmor("assets/kevlarArmor.png", renderer, posX, posY);
+		Armor* armura = new KevlarArmor("assets/kevlarArmor.png", renderer, posX, posY);	//generarea unei armuri random
 		switch (armorType) {
 		case 0:
 			armura = new KevlarArmor("assets/kevlarArmor.png", renderer, posX, posY);
@@ -62,9 +62,12 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, in
 		case 2:
 			armura = new JuggernautArmor("assets/juggernaut.png", renderer, posX, posY);
 			break;
+		default :
+			armura = new KevlarArmor("assets/kevlarArmor.png", renderer, posX, posY);
+			break;
 		}
 		int weaponType = rand() % 3;
-		Weapon* arma = new M4a1s("assets/m4a1s.png", renderer, posX, posY);
+		Weapon* arma = new M4a1s("assets/m4a1s.png", renderer, posX, posY);		//generarea unei arme random
 		switch (weaponType) {
 		case 0:
 			arma = new M4a1s("assets/m4a1s.png", renderer, posX, posY);
@@ -75,11 +78,14 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, in
 		case 2:
 			arma = new Bazooka("assets/bazooka.png", renderer, posX, posY);
 			break;
+		default:
+			arma = new Bazooka("assets/bazooka.png", renderer, posX, posY);
+			break;
 		}
 
-		Game::objects.pushAgent(new Agent("assets/agent.png", "assets/visibility.png", renderer, posX, posY));
-		Game::objects.getAgents()[i]->setId(i+1);
-		Game::objects.getAgents()[i]->setArmor(armura);
+		Game::objects.pushAgent(new Agent("assets/agent.png", "assets/visibility.png", renderer, posX, posY));	//introducerea agentului in object manager
+		Game::objects.getAgents()[i]->setId(i+1);				//setarea id-ului
+		Game::objects.getAgents()[i]->setArmor(armura);			
 		Game::objects.getAgents()[i]->setWeapon(arma);
 		Game::objects.getAgents()[i]->setVisibilityArea(visibilityArea);
 		Game::objects.getAgents()[i]->setXCoord(posX / 32);
@@ -97,7 +103,7 @@ void Game::handleEvents() {
 		case SDL_QUIT:
 			isRunning = false;
 			break;
-		case SDL_KEYDOWN:
+		case SDL_KEYDOWN:				//cand este apasat un buton se trece la runda urmatoare
 			runda++;
 			cout << endl << "------------------------------"<<endl;
 			cout << "round "<<runda<<endl;
@@ -110,12 +116,12 @@ void Game::handleEvents() {
 void Game::update() {
 
 	if (runda > rundaCurenta) {
+		for (Agent* agent : Game::objects.getAgents()) {			//parcurgem agentii
+			agent->takeAction(*map,objects.getAgents());			//punem fiecare agent sa ia o decizie
 
-		for (Agent* agent : Game::objects.getAgents()) {
-			agent->takeAction(*map,objects.getAgents());
-
-			if (agent->getHp() <= 0) {
+			if (agent->getHp() <= 0) {								//daca ajunge sa aiba hp<0
 				int index = 0;
+				cout << endl << "a murit: " << agent->getId() << endl;
 				for (int i = 0; i < objects.getAgents().size(); i++) {
 					if (agent->getId() == objects.getAgents()[i]->getId()) {
 						index = i;
@@ -127,7 +133,7 @@ void Game::update() {
 					if (i != index) {
 						nou.push_back(objects.getAgents()[i]);
 					}
-				}
+				}													//il stergem din lista de agenti
 				objects.setAgents(nou);
 				map->getBlocuri()[agent->getYCoord()][agent->getXCoord()].setIsOccupied(false);
 				map->getBlocuri()[agent->getYCoord()][agent->getXCoord()].setAgentId(NULL);

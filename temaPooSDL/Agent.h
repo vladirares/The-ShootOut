@@ -20,8 +20,8 @@ class Agent: public GameObject
 	int hp;
 	int visibilityArea;
 	int xCoord, yCoord;
-	Armor* armor;
-	Weapon* weapon;
+	Armor* armor;										//pointer catre armura agentului
+	Weapon* weapon;										//pointer catre arma agentului
 	vector<int> enemies;
 	SDL_Rect srcRectVisibility, destRectVisibility;
 	SDL_Texture* visibilityTexture;

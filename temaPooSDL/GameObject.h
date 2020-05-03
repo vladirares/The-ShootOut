@@ -11,7 +11,7 @@ protected:
 	SDL_Renderer* renderer;
 public:
 	GameObject(const char* texturesheet, SDL_Renderer* ren,int x, int y);
-	~GameObject();
+	virtual ~GameObject();
 	void Update();
 	void Render();
 

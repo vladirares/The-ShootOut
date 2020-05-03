@@ -10,7 +10,7 @@ CeramicArmor::CeramicArmor(const char* texturesheet, SDL_Renderer* ren, int x, i
 	this->name = "CeramicArmor";
 }
 
-int CeramicArmor::calculateTotalDamage(Weapon &arma) {
+int CeramicArmor::calculateTotalDamage(Weapon &arma) {									//suprascrierea metodei pur virtuale
 	int totalDamage = 0;
 	totalDamage += arma.getDamage().baseDamage * (1 - baseDamageAbsorption * hp/100) ;
 	totalDamage += arma.getDamage().bulletDamage * (1 - bulletDamageAbsorption * hp / 100);

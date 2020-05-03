@@ -45,7 +45,7 @@ ostream& operator<<(ostream& out, const Map& map) {
 	return out;
 }
 
-bool Map::haveWinner() {
+bool Map::haveWinner() {									//verifica daca exista un castigator
 	int total = 0;
 	int id = 0;
 	for (int i = 0; i < blocuri.size(); i++) {
