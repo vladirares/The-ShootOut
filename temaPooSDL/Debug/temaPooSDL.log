@@ -1,0 +1,5 @@
+﻿  Game.cpp
+D:\Programming\Projects\C++\temaPOO\temaPoo\temaPooSDL\temaPooSDL\Game.cpp(69,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\Programming\Projects\C++\temaPOO\temaPoo\temaPooSDL\temaPooSDL\Game.cpp(143,23): warning C4018: '<': signed/unsigned mismatch
+D:\Programming\Projects\C++\temaPOO\temaPoo\temaPooSDL\temaPooSDL\Game.cpp(150,23): warning C4018: '<': signed/unsigned mismatch
+  temaPooSDL.vcxproj -> D:\Programming\Projects\C++\temaPOO\temaPoo\temaPooSDL\Debug\temaPooSDL.exe
