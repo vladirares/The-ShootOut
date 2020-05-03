@@ -10,5 +10,4 @@ public:
 	vector<Agent*> getAgents();
 	void setAgents(vector<Agent*>);
 	void pushAgent(Agent*);
-
 };

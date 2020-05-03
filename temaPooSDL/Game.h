@@ -17,7 +17,6 @@ class Game
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	static Map* map;
-	//Map* map;
 	static ObjectManager objects;
 	int cnt = 0;
 public:

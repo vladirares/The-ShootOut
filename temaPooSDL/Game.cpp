@@ -1,20 +1,12 @@
 #include "Game.h"
 
-//#define zero_puncte_prima_tema if
-//#define incurajare_la_copiat for
-
-
 Agent* player;
 Agent* playerAr;
 Map* Game::map;
 int runda = 0;
 int rundaCurenta = 0;
 bool finalRound = false;
-//int visibilityRange = 0;
-
-//ObjectManager objects;
 ObjectManager Game::objects;
-
 
 Game::Game() {
 
@@ -22,6 +14,7 @@ Game::Game() {
 Game::~Game() {
 
 }
+
 void Game::init(const char* title, int xpos, int ypos, int width, int height, int noAgents, int visibilityArea, bool fullscreen) {
 	int flags = 0;
 	if (fullscreen) {
@@ -46,7 +39,6 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, in
 	}
 
 	map = new Map(renderer, width / 32, height / 32);
-	//aici
 	cout << *map;
 	cout << "press any button to start the game" << endl;
 
@@ -164,7 +156,6 @@ void Game::update() {
 
 void Game::render() {
 	SDL_RenderClear(renderer);
-	//this is where we would add stuff to render;
 	map->DrawMap(renderer);
 	for (Agent* agent : Game::objects.getAgents()) {
 		agent->Render();
