@@ -1,4 +1,7 @@
 # The-ShootOut
+
+![scheme](/documentation/game.gif)
+
 ![scheme](/documentation/doc1.png)
 
 Weapon:
