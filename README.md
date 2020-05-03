@@ -15,4 +15,6 @@ Weapon:
   - weight
   - hp
   
- ![scheme](/documentation/weaponTable.png)
+![scheme](/documentation/weaponTable.png)
+ 
+![scheme](/documentation/armorTable.png)
