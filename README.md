@@ -18,3 +18,5 @@ Weapon:
 ![scheme](/documentation/weaponTable.png)
  
 ![scheme](/documentation/armorTable.png)
+
+![scheme](/documentation/agentLogic.png)
