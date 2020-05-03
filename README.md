@@ -14,3 +14,5 @@ Weapon:
   - explosionDamageAbsorption
   - weight
   - hp
+  
+ ![scheme](/documentation/weaponTable.png)
