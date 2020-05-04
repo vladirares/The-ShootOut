@@ -33,4 +33,6 @@ Weapon:
  
 ![scheme](/documentation/armorTable.png)
 
+Note: If the armor is heavier the agent will do less damage due to inaccuracy.
+
 ![scheme](/documentation/agentLogic.png)
